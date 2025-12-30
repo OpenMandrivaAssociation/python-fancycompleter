@@ -2,7 +2,7 @@
 
 Name:		python-fancycompleter
 Version:	0.9.1
-Release:	2
+Release:	3
 Summary:	Colorful TAB completion for Python prompt
 URL:		https://pypi.org/project/fancycompleter/
 License:	BSD
