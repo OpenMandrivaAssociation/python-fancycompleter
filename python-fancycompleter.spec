@@ -2,7 +2,7 @@
 
 Name:		python-fancycompleter
 Version:	0.11.1
-Release:	1
+Release:	2
 Summary:	Colorful TAB completion for Python prompt
 URL:		https://pypi.org/project/fancycompleter/
 License:	BSD
@@ -10,7 +10,7 @@ Group:		Development/Python
 Source0:	https://files.pythonhosted.org/packages/source/f/%{module}/%{module}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildSystem:	python
 BuildArch:	noarch
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-scm)
@@ -22,6 +22,10 @@ Colorful TAB completion for Python prompt.
 
 %prep
 %autosetup -p1 -n %{module}-%{version}
+
+%build -p
+# The sdist is not a git checkout, and prep removes the bundled egg-info.
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # Remove bundled egg-info
 rm -rf %{module}.egg-info
 
